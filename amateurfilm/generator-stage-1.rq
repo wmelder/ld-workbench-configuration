@@ -9,12 +9,12 @@ CONSTRUCT {
     $this a edm:ProvidedCHO ;
 		edm:type ?edm_type ;
 		dc:creator ?creator ;
-		dc:description ?lang_description ;
+		dc:description ?description ;
 		dc:type ?genre ;
 		dc:subject ?subject ;
-		dc:subject ?lang_keyword ;
-		dc:title ?lang_name ;
-		dcterms:alternative ?lang_altName ;
+		dc:subject ?keyword ;
+		dc:title ?name ;
+		dcterms:alternative ?altName ;
 		dc:publisher ?publisher ;
 		dcterms:spatial ?spatial ;
 		dcterms:temporal ?temporal ;
@@ -55,7 +55,6 @@ CONSTRUCT {
 
 	OPTIONAL {
 		$this sdo:description ?description 
-		BIND(STRLANG(STR(?description), "nl") AS ?lang_description) #temp fix
 	}
 	OPTIONAL {
 	   $this sdo:about ?subject .
@@ -63,7 +62,6 @@ CONSTRUCT {
 	}
 	OPTIONAL {
 		$this sdo:name ?name 
-		BIND(STRLANG(STR(?name), "nl") AS ?lang_name) #temp fix
 	}
 	OPTIONAL {
 		$this sdo:publisher ?publisher 
@@ -81,7 +79,6 @@ CONSTRUCT {
 	}
 	OPTIONAL {
 		$this sdo:keywords ?keyword
-		BIND(STRLANG(?keyword, "nl") AS ?lang_keyword) # temp fix
 	}
 
 	# Klopt het dat er momenteel geen Publiek Domein of Creative Commons waarden voorkomen in de dataset?
@@ -97,7 +94,6 @@ CONSTRUCT {
 	}
 	OPTIONAL {
 		$this sdo:alternativeHeadline ?altName
-		BIND(STRLANG(STR(?altName), "nl") AS ?lang_alt_name) # temp fix
 	}
 	OPTIONAL {
 		$this sdo:location ?spatial .
